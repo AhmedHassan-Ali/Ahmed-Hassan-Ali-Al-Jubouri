@@ -1,299 +1,221 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html dir="rtl" lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المحامي أحمد حسن علي الجبوري | مستشار قانوني في نينوى</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+    <title>الموقع الرسمي للمحامي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0a192f;
-            --secondary: #c5a059; /* ذهبي ملكي */
-            --accent: #172a45;
-            --white: #e6f1ff;
-            --slate: #8892b0;
-            --glass: rgba(255, 255, 255, 0.05);
+            --primary-color: #0f172a; /* كحلي ملكي داكن */
+            --accent-color: #c5a059; /* ذهبي فخم */
+            --text-color: #333;
+            --bg-light: #f8fafc;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; scroll-behavior: smooth; }
-
-        body { background-color: var(--primary); color: var(--white); overflow-x: hidden; line-height: 1.8; }
-
-        /* شاشة التحميل الذكية */
-        #loader {
-            position: fixed; width: 100%; height: 100vh; background: var(--primary);
-            z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-        /* القائمة العلوية */
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* تنسيق الهيدر (الجزء العلوي) */
         header {
-            position: fixed; top: 0; width: 100%; padding: 25px 10%;
-            display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000; transition: 0.5s; background: transparent;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 60px 20px 80px;
+            text-align: center;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-        header.sticky { background: rgba(10, 25, 47, 0.98); padding: 15px 10%; border-bottom: 2px solid var(--secondary); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .logo { font-family: 'Amiri', serif; font-size: 1.8rem; color: var(--secondary); text-decoration: none; font-weight: bold; letter-spacing: 1px; }
-        
-        nav ul { display: flex; list-style: none; }
-        nav ul li { margin-right: 30px; }
-        nav ul li a { color: var(--white); text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: 0.3s; position: relative; }
-        nav ul li a:hover { color: var(--secondary); }
-        nav ul li a::after { content: ''; width: 0; height: 2px; background: var(--secondary); position: absolute; bottom: -5px; right: 0; transition: 0.3s; }
-        nav ul li a:hover::after { width: 100%; }
 
-        /* الواجهة الرئيسية - Hero */
-        .hero {
-            height: 100vh; display: flex; align-items: center; padding: 0 10%;
-            background: linear-gradient(to left, rgba(10,25,47,0.95), rgba(10,25,47,0.7)), url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover; background-position: center;
+        /* تنسيق الصورة الشخصية */
+        .profile-container {
+            position: relative;
+            margin-top: -60px;
+            text-align: center;
         }
-        .hero-container { display: grid; grid-template-columns: 1.3fr 1fr; gap: 50px; align-items: center; width: 100%; }
-        
-        .hero-content h1 { font-family: 'Amiri', serif; font-size: 3.8rem; line-height: 1.2; margin-bottom: 20px; }
-        .hero-content span { color: var(--secondary); }
-        .hero-content p { font-size: 1.25rem; color: var(--slate); max-width: 650px; margin-bottom: 35px; text-align: justify; }
 
-        /* تنسيق صورة المحامي أحمد الجبوري */
-        .lawyer-photo-wrap { position: relative; display: flex; justify-content: center; }
-        .lawyer-photo {
-            width: 350px; height: 480px;
-            border-radius: 20px;
-            border: 4px solid var(--secondary);
+        .profile-pic {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 5px solid white;
             object-fit: cover;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-            z-index: 2;
-            background-color: var(--accent);
-        }
-        .photo-decoration {
-            position: absolute; top: 30px; right: 30px;
-            width: 350px; height: 480px;
-            border: 2px solid var(--secondary);
-            border-radius: 20px; z-index: 1; opacity: 0.5;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            background-color: #ddd; /* لون مؤقت حتى ترفع الصورة */
         }
 
-        .btn-gold {
-            padding: 16px 40px; background: var(--secondary); color: var(--primary);
-            text-decoration: none; font-weight: 800; border-radius: 5px;
-            transition: 0.4s; display: inline-block; box-shadow: 0 5px 20px rgba(197, 160, 89, 0.4);
+        .badge {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: inline-block;
+            margin-top: 10px;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        .btn-gold:hover { background: var(--white); transform: translateY(-5px); }
 
-        /* الأقسام */
-        section { padding: 120px 10%; }
-        .section-title { text-align: center; margin-bottom: 80px; }
-        .section-title h2 { font-family: 'Amiri', serif; font-size: 3rem; color: var(--secondary); position: relative; padding-bottom: 20px; }
-        .section-title h2::after { content: ''; width: 80px; height: 4px; background: var(--secondary); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
-
-        /* الإحصائيات */
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center; background: var(--accent); padding: 60px 10%; }
-        .stat-item h2 { font-size: 3.5rem; color: var(--secondary); font-family: 'Amiri', serif; }
-        .stat-item p { color: var(--slate); font-weight: bold; text-transform: uppercase; }
-
-        /* التخصصات */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .service-card {
-            background: rgba(23, 42, 69, 0.5); padding: 50px 30px; border-radius: 15px;
-            border: 1px solid rgba(197, 160, 89, 0.1); transition: 0.5s; text-align: center;
+        .content {
+            padding: 20px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-in;
         }
-        .service-card:hover { transform: translateY(-15px); border-color: var(--secondary); background: var(--accent); }
-        .service-card i { font-size: 3.5rem; color: var(--secondary); margin-bottom: 25px; }
-        .service-card h3 { margin-bottom: 15px; font-size: 1.6rem; color: var(--white); }
 
-        /* آراء العملاء */
-        .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .testi-card { background: var(--glass); padding: 40px; border-radius: 15px; border-right: 6px solid var(--secondary); position: relative; }
-        .testi-card i { position: absolute; top: 20px; left: 20px; font-size: 2rem; color: var(--secondary); opacity: 0.2; }
-
-        /* الموقع والخريطة */
-        .contact-wrap { display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px; align-items: start; }
-        .info-box { background: var(--accent); padding: 40px; border-radius: 20px; }
-        .info-box p { margin-bottom: 20px; font-size: 1.1rem; display: flex; align-items: center; }
-        .info-box i { color: var(--secondary); margin-left: 15px; font-size: 1.3rem; width: 30px; }
-        .map-frame { width: 100%; height: 450px; border-radius: 20px; overflow: hidden; border: 2px solid var(--secondary); box-shadow: 0 15px 40px rgba(0,0,0,0.4); }
-        iframe { filter: invert(90%) hue-rotate(180deg) brightness(95%); }
-
-        /* زر واتساب العائم */
-        .whatsapp-btn {
-            position: fixed; bottom: 30px; left: 30px; background: #25d366; color: white;
-            width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 35px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); z-index: 1000; transition: 0.3s; text-decoration: none;
+        h1 {
+            color: var(--primary-color);
+            margin-top: 15px;
+            font-size: 26px;
+            font-weight: 700;
         }
-        .whatsapp-btn:hover { transform: scale(1.15) rotate(10deg); background: #128c7e; }
 
-        footer { background: #020c1b; padding: 100px 10% 40px; border-top: 1px solid var(--secondary); text-align: center; }
-        .footer-social a { color: var(--white); font-size: 1.8rem; margin: 0 15px; transition: 0.3s; }
-        .footer-social a:hover { color: var(--secondary); }
-
-        @media (max-width: 992px) {
-            .hero-container, .contact-wrap { grid-template-columns: 1fr; text-align: center; }
-            .hero-content h1 { font-size: 2.8rem; }
-            .lawyer-photo { width: 280px; height: 380px; }
-            .photo-decoration { display: none; }
-            nav { display: none; }
+        .title {
+            color: #64748b;
+            font-size: 16px;
+            margin-bottom: 20px;
         }
+
+        /* تنسيق قسم الخدمات */
+        .services {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .service-tag {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: var(--primary-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* أزرار الاتصال */
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-call {
+            background-color: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .btn-location {
+            background-color: white;
+            color: var(--primary-color);
+            border: 2px solid #e2e8f0;
+        }
+
+        /* تذييل الصفحة */
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 12px;
+            color: #94a3b8;
+            padding-bottom: 20px;
+        }
+
+        /* حركة ظهور ناعمة */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
     </style>
 </head>
 <body>
 
-    <div id="loader">
-        <i class="fas fa-balance-scale fa-4x" style="color: var(--secondary); margin-bottom: 20px;"></i>
-        <h2 style="font-family: 'Amiri'; color: var(--secondary);">جاري تحميل ملفات المحامي...</h2>
-    </div>
-
-    <header id="navbar">
-        <a href="#" class="logo">أحمد الجبوري.</a>
-        <nav>
-            <ul>
-                <li><a href="#home">الرئيسية</a></li>
-                <li><a href="#services">التخصصات</a></li>
-                <li><a href="#testimonials">النتائج</a></li>
-                <li><a href="#contact">الموقع</a></li>
-            </ul>
-        </nav>
-        <a href="tel:07512045439" class="btn-gold" style="padding: 10px 25px; font-size: 0.85rem;">إتصال مباشر</a>
+    <header>
+        <div style="opacity: 0.8; font-size: 14px;">مكتب المحاماة والاستشارات القانونية</div>
+        <div style="font-size: 40px; margin-top: 10px;">⚖️</div>
     </header>
 
-    <section class="hero" id="home">
-        <div class="hero-container">
-            <div class="hero-content" data-aos="fade-left">
-                <p style="color: var(--secondary); font-weight: bold; letter-spacing: 3px;">مكتب نينوى للمحاماة والاستشارات</p>
-                <h1>المحامي <span>أحمد حسن علي الجبوري</span></h1>
-                <p>خبير قانوني بخبرة تزيد عن 5 سنوات في المحاكم العراقية. متخصص في حماية مصالح الموكلين وانتزاع الحقوق بقوة القانون، مع سجل حافل بأكثر من 200 قضية ناجحة في نينوى وكافة المحافظات.</p>
-                <div style="display: flex; gap: 20px; justify-content: flex-start;">
-                    <a href="#contact" class="btn-gold">حجز موعد مقابلة</a>
-                    <div style="align-self: center;">
-                        <a href="https://www.facebook.com/share/17Z73RCpSa/" target="_blank" style="color: white; margin-left: 15px; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="lawyer-photo-wrap" data-aos="zoom-in">
-                <div class="photo-decoration"></div>
-                <img src="https://i.postimg.cc/R66ghKvs/image.jpg" alt="المحامي أحمد حسن الجبوري" class="lawyer-photo">
-            </div>
-        </div>
-    </section>
+    <div class="profile-container">
+        <img src="profile.jpg" alt="صورة المحامي" class="profile-pic" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
+    </div>
 
-    <div class="stats-grid">
-        <div class="stat-item" data-aos="fade-up">
-            <h2>+5</h2>
-            <p>سنوات خبرة قانونية</p>
+    <div class="content">
+        <span class="badge">محامٍ نظامي معتمد</span>
+        
+        <h1>المحامي [الاسم الكامل هنا]</h1>
+        
+        <p class="title">
+            ماجستير في القانون - عضو نقابة المحامين<br>
+            خبرة واسعة في المحاكم العراقية
+        </p>
+
+        <p style="color: #555; font-size: 15px;">
+            "نسعى جاهدين لتحقيق العدالة وحماية حقوق موكلينا بكل أمانة واحترافية. شعارنا الصدق، السرية، والإنجاز."
+        </p>
+
+        <div class="services">
+            <div class="service-tag">⚖️ القضايا الجنائية</div>
+            <div class="service-tag">🏘️ العقارات والأراضي</div>
+            <div class="service-tag">💍 الأحوال الشخصية</div>
+            <div class="service-tag">🤝 تأسيس الشركات</div>
         </div>
-        <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
-            <h2>+200</h2>
-            <p>قضية رابحة ومنجزة</p>
-        </div>
-        <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
-            <h2>100%</h2>
-            <p>التزام بالسرية المهنية</p>
+
+        <div class="actions">
+            <a href="tel:07700000000" class="btn btn-call">
+                اتصال هاتفي مباشر 📞
+            </a>
+
+            <a href="https://wa.me/9647700000000" class="btn btn-whatsapp">
+                مراسلة عبر واتساب 💬
+            </a>
+            
+            <a href="#" class="btn btn-location">
+                📍 موقع المكتب (بغداد - المنصور)
+            </a>
         </div>
     </div>
 
-    <section id="services">
-        <div class="section-title" data-aos="fade-up">
-            <h2>مجالات الاختصاص الدقيق</h2>
-        </div>
-        <div class="services-grid">
-            <div class="service-card" data-aos="fade-up">
-                <i class="fas fa-users"></i>
-                <h3>الأحوال الشخصية</h3>
-                <p>تمثيل قانوني رصين في قضايا الزواج، الطلاق، النفقة، والحضانة وفق أحكام القانون.</p>
-            </div>
-            <div class="service-box" data-aos="fade-up" style="display:none;"></div> <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                <i class="fas fa-hand-holding-dollar"></i>
-                <h3>قضايا التعويضات</h3>
-                <p>تحصيل الحقوق المالية الناتجة عن الأضرار وحوادث السير بمهارة استراتيجية عالية.</p>
-            </div>
-            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                <i class="fas fa-landmark"></i>
-                <h3>القضايا العقارية</h3>
-                <p>حل نزاعات الأراضي، التسجيل العقاري، وصياغة عقود البيع والشراء لضمان حقك.</p>
-            </div>
-            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                <i class="fas fa-gavel"></i>
-                <h3>القضايا الجزائية</h3>
-                <p>دفاع مستميت وخبرة عميقة في قضايا الجنح والجنايات لضمان المحاكمة العادلة.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="testimonials" style="background: var(--accent);">
-        <div class="section-title" data-aos="fade-up">
-            <h2>ثقة موكلينا في نينوى</h2>
-        </div>
-        <div class="testi-grid">
-            <div class="testi-card" data-aos="flip-right">
-                <i class="fas fa-quote-right"></i>
-                <p>"الأستاذ أحمد الجبوري محامي يتميز بالصدق والأمانة قبل كل شيء. استطاع كسب قضية تعويض معقدة لصالحي."</p>
-                <h4>- م. سعدون الموصلي</h4>
-            </div>
-            <div class="testi-card" data-aos="flip-right" data-aos-delay="100">
-                <i class="fas fa-quote-right"></i>
-                <p>"خبرة كبيرة في قضايا الأحوال الشخصية، تعامله راقي جداً ويشرح كافة التفاصيل القانونية بوضوح."</p>
-                <h4>- السيد أبو محمد</h4>
-            </div>
-            <div class="testi-card" data-aos="flip-right" data-aos-delay="200">
-                <i class="fas fa-quote-right"></i>
-                <p>"بفضل ذكاء الأستاذ أحمد في المرافعة، استعدنا حقنا العقاري بعد نزاع دام لسنوات. رجل كفؤ وبطل."</p>
-                <h4>- أ. لؤي الحيالي</h4>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="section-title" data-aos="fade-up">
-            <h2>موقع المكتب وتفاصيل الحضور</h2>
-        </div>
-        <div class="contact-wrap">
-            <div class="info-box" data-aos="fade-left">
-                <h3 style="color: var(--secondary); margin-bottom: 30px; font-family: 'Amiri'; font-size: 1.8rem;">تواصل معنا الآن</h3>
-                <p><i class="fas fa-map-marker-alt"></i> نينوى، حي الشيماء</p>
-                <p><i class="fas fa-phone"></i> 07512045439</p>
-                <p><i class="fas fa-clock"></i> الفترة المسائية: 04:00 م - 08:00 م</p>
-                <p><i class="fas fa-id-card"></i> عضو نقابة المحامين العراقيين</p>
-                <div style="margin-top: 30px;">
-                    <a href="tel:07512045439" class="btn-gold" style="width: 100%; text-align: center;">اتصال هاتفي مباشر</a>
-                </div>
-            </div>
-            <div class="map-frame" data-aos="zoom-in">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102947.16870026132!2d43.04169557451614!3d36.3330369804865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40079497028c4ffd%3A0x8883058039600000!2sMosul!5e0!3m2!1sen!2siq!4v1700000000000!5m2!1sen!2siq" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-        </div>
-    </section>
-
     <footer>
-        <div class="footer-social">
-            <a href="https://www.facebook.com/share/17Z73RCpSa/"><i class="fab fa-facebook-square"></i></a>
-            <a href="https://wa.me/message/AA3NOJ4NIOQ4G1"><i class="fab fa-whatsapp"></i></a>
-            <a href="tel:07512045439"><i class="fas fa-phone-alt"></i></a>
-        </div>
-        <p style="margin-top: 30px; color: var(--slate);">جميع الحقوق محفوظة © 2024 - مكتب المحامي أحمد حسن علي الجبوري</p>
+        &copy; 2024 جميع الحقوق محفوظة لمكتب المحامي
     </footer>
 
-    <a href="https://wa.me/message/AA3NOJ4NIOQ4G1" class="whatsapp-btn" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // إخفاء شاشة التحميل بعد التحميل الكامل
-        window.addEventListener('load', () => {
-            const loader = document.getElementById('loader');
-            loader.style.opacity = '0';
-            setTimeout(() => { loader.style.display = 'none'; }, 600);
-            AOS.init({ duration: 1000, once: true });
-        });
-
-        // تغيير شكل القائمة العلوية عند التمرير
-        window.onscroll = () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 100) nav.classList.add('sticky');
-            else nav.classList.remove('sticky');
-        };
-    </script>
 </body>
 </html>
