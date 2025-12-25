@@ -11,7 +11,6 @@
         :root {
             --gold: #d4af37;
             --dark-blue: #0f1621;
-            --overlay: rgba(15, 22, 33, 0.9);
             --soft-white: #f8f9fa;
         }
 
@@ -28,22 +27,23 @@
             line-height: 1.6;
         }
 
-        /* خلفية مزخرفة */
+        /* خلفية مزخرفة خفيفة */
         .bg-pattern {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png');
-            opacity: 0.3;
+            background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.1), transparent 40%),
+                        url('https://www.transparenttextures.com/patterns/dark-matter.png');
+            opacity: 0.4;
             z-index: -1;
         }
 
         header {
-            padding: 20px 8%;
+            padding: 15px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(15, 22, 33, 0.95);
-            border-bottom: 2px solid var(--gold);
+            background: rgba(15, 22, 33, 0.98);
+            border-bottom: 1px solid var(--gold);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -51,7 +51,7 @@
 
         .logo {
             font-family: 'Amiri', serif;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: var(--gold);
             font-weight: bold;
             text-decoration: none;
@@ -62,69 +62,73 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 60px 10%;
-            min-height: 90vh;
-            gap: 40px;
+            padding: 50px 10% 80px;
+            min-height: 85vh;
+            gap: 30px;
         }
 
         .hero-text { flex: 1; }
 
         .hero-text h1 {
             font-family: 'Amiri', serif;
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             color: var(--gold);
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
         }
 
         .hero-text h2 {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             color: #bdc3c7;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             font-weight: 400;
         }
 
+        /* تعديل حجم الصورة لتكون أوضح */
         .hero-image {
-            flex: 1;
+            flex: 0 0 auto; /* منع الصورة من التمدد الزائد */
             display: flex;
             justify-content: center;
             position: relative;
         }
 
         .hero-image img {
-            width: 320px;
-            height: 420px;
-            object-fit: cover;
-            border-radius: 15px;
-            border: 4px solid var(--gold);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+            /* تم تصغير الحجم قليلاً للحفاظ على الدقة */
+            width: 280px; 
+            height: 380px;
+            object-fit: cover; /* ملء الإطار */
+            object-position: center top; /* التركيز على الجزء العلوي من الصورة */
+            border-radius: 12px;
+            border: 3px solid var(--gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
             z-index: 2;
         }
 
-        /* الإطار خلف الصورة */
+        /* الإطار الخلفي */
         .hero-image::after {
             content: "";
             position: absolute;
-            width: 320px;
-            height: 420px;
-            border: 2px solid var(--gold);
-            top: 20px;
-            right: 40px;
-            border-radius: 15px;
+            width: 280px;
+            height: 380px;
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            top: 15px;
+            right: 30px;
+            border-radius: 12px;
             z-index: 1;
         }
 
         .btn-container { margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap; }
 
         .btn {
-            padding: 12px 30px;
+            padding: 10px 25px;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 8px;
+            border-radius: 6px;
             transition: 0.3s;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            font-size: 1rem;
         }
 
         .btn-gold { background: var(--gold); color: #000; }
@@ -134,49 +138,52 @@
         .btn-outline:hover { background: rgba(212, 175, 55, 0.1); }
 
         /* تخصصات */
-        .services { padding: 80px 10%; background: #151d29; text-align: center; }
+        .services { padding: 70px 10%; background: rgba(21, 29, 41, 0.8); text-align: center; }
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
         }
         .service-card {
             background: var(--dark-blue);
-            padding: 30px;
-            border-radius: 12px;
+            padding: 25px;
+            border-radius: 10px;
             border: 1px solid rgba(212, 175, 55, 0.1);
             transition: 0.3s;
         }
         .service-card:hover { border-color: var(--gold); transform: translateY(-5px); }
-        .service-card i { font-size: 2.5rem; color: var(--gold); margin-bottom: 20px; }
+        .service-card i { font-size: 2.2rem; color: var(--gold); margin-bottom: 15px; }
 
         /* معلومات التواصل */
-        .contact-section { padding: 80px 10%; }
+        .contact-section { padding: 70px 10%; }
         .info-box {
-            background: rgba(212, 175, 55, 0.05);
-            padding: 40px;
+            background: rgba(212, 175, 55, 0.03);
+            padding: 30px;
             border-radius: 15px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
         }
         .info-item { text-align: center; }
-        .info-item i { font-size: 2rem; color: var(--gold); margin-bottom: 15px; display: block; }
+        .info-item i { font-size: 1.8rem; color: var(--gold); margin-bottom: 10px; display: block; }
 
         footer {
             text-align: center;
-            padding: 40px;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 30px;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
             color: #7f8c8d;
+            font-size: 0.9rem;
         }
 
         /*Responsive*/
         @media (max-width: 768px) {
             .hero { flex-direction: column-reverse; text-align: center; padding-top: 30px; }
-            .hero-text h1 { font-size: 2.2rem; }
-            .hero-image img, .hero-image::after { width: 250px; height: 330px; }
-            .hero-image::after { display: none; }
+            .hero-text h1 { font-size: 2.5rem; }
+            /* تصغير الصورة للموبايل */
+            .hero-image img, .hero-image::after { width: 240px; height: 320px; }
+            .hero-image::after { right: 15px; top: 10px; }
         }
     </style>
 </head>
@@ -186,7 +193,7 @@
     <header>
         <a href="#" class="logo">مكتب المحامي الجبوري</a>
         <div>
-             <a href="tel:07512045439" style="color: var(--gold); text-decoration: none; font-weight: bold;">
+             <a href="tel:07512045439" style="color: var(--gold); text-decoration: none; font-weight: bold; font-size: 0.9rem;">
                 <i class="fas fa-phone"></i> اتصل بنا
              </a>
         </div>
@@ -209,7 +216,7 @@
     </section>
 
     <section class="services">
-        <h2 style="font-family: 'Amiri', serif; font-size: 2.5rem; color: var(--gold);">مجالات التخصص القانوني</h2>
+        <h2 style="font-family: 'Amiri', serif; font-size: 2.2rem; color: var(--gold);">مجالات التخصص القانوني</h2>
         <div class="services-grid">
             <div class="service-card">
                 <i class="fas fa-balance-scale"></i>
